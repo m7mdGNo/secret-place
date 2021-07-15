@@ -15,6 +15,7 @@ import django_heroku
 import dj_database_url
 
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -80,7 +81,7 @@ WSGI_APPLICATION = 'sarahah.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'new_database',
         'USER': 'postgres',
         'PASSWORD': '2591',
