@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{%block content%}
+<h1>hello {{user.username}}</h1>
+  <li>  <a type="submit" href="register">register</a></li>
+   <li>  <a type="submit" href="login">login</a></li>
+   <li>  <a type="submit" href="/profile/{{user.id}}">profile</a></li>
+
+
+
+
+
+
+
+{%endblock%}

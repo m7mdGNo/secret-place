@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{%block content%}
+{% if messages %}
+
+  {% for message in messages %}
+  <div class="alert alert-info">
+    {{ message }}
+  </div>
+  {% endfor %}
+
+  {% endif %}
+<div class="container">
+    <div class="wrapper">
+      <table class="container">
+        <tr>
+            <th>messages</th>
+        </tr>
+        <tr>
+            {% for n in form %}
+
+            <td>{{n}}</td>
+            {% endfor %}
+        </tr>
+      </table>
+    </div>
+  </div>
+{%endblock%}
