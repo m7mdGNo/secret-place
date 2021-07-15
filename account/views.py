@@ -57,8 +57,9 @@ def Login(request):
 
 def Profile_User(request, pk):
     profile = User.objects.get(id=pk).Profile
-    if profile == request.user.Profile:
-        return redirect('home')
+    if request.user.is_authenticated:
+        if profile == request.user.Profile:
+            return redirect('home')
     if request.method == 'POST':
         text = request.POST.get('text')
         Message.objects.create(text=text,user=profile)
