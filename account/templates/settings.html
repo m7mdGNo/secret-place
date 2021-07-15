@@ -149,13 +149,21 @@
             legend{
               color: #990;
             }
+            input:-webkit-autofill,
+            input:-webkit-autofill:hover,
+            input:-webkit-autofill:focus,
+            input:-webkit-autofill:active
+            {
+            -webkit-box-shadow: 0 0 0 30px #000 inset !important;
+            -webkit-text-fill-color: #990 !important;
+            }
         </style>
     </head>
     <body>
         <div id="container">
           <div id="imgarea">
             <div id="above"></div>
-              <img src="https://drive.google.com/uc?id=1HgQeF7IX2TbwQq2KFBPgfxKRStV2Jyye&export=download">
+              <img src="{{request.user.Profile.img.url}}">
           </div>
           <button>Change picture</button>
             <fieldset>

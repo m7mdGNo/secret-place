@@ -112,7 +112,7 @@
             <p id="h_para">{{user.first_name}}  {{user.last_name}}</p>
             <button>Copy link</button>
             <a href="{%url 'setting'%}"><button>edit your profile</button></a>
-            <hr><marquee>Your messages</marquee>
+            <hr><marquee>You have  {{num}} messages</marquee>
             {% for n in messages_box %}
             <div id="space">
             <div id="msgarea">
@@ -120,10 +120,8 @@
             </div>
             </div>
             {% endfor %}
-
-            
-
             
         </div>
     </body>
+
 </html>

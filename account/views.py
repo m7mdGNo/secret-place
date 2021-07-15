@@ -13,7 +13,8 @@ def home(request):
     user = request.user
     if user.is_authenticated:
         messages_box = user.Profile.message_set.all()
-        return render(request, 'profile.html', {'messages_box': messages_box})
+        num_of_messages = messages_box.count()
+        return render(request, 'profile.html', {'messages_box': messages_box,'num':num_of_messages})
     return render(request, 'home.html')
 
 
@@ -60,10 +61,9 @@ def Profile_User(request, pk):
     if request.user.is_authenticated:
         if profile == request.user.Profile:
             return redirect('home')
-    if request.method == 'POST':
         text = request.POST.get('text')
         Message.objects.create(text=text,user=profile)
-    return render(request, 'send.html', {"profile":profile})
+    return render(request, 'send.html', {"profile":profile,'PK':pk})
 
 @login_required(login_url='login')
 def setting(request):
