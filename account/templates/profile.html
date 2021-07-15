@@ -107,7 +107,7 @@
         <div id="container">
           <div id="imgarea">
             <div id="above"></div>
-              <img src="https://www.kindpng.com/picc/m/9-93976_my-account-hover-comments-icon-hd-png-download.png">
+              <img src="{{request.user.Profile.img.url}}">
           </div>
             <p id="h_para">{{user.first_name}}  {{user.last_name}}</p>
             <button>Copy link</button>
