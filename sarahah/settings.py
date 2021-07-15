@@ -86,10 +86,12 @@ DATABASES = {
         'NAME': 'new_database',
         'USER': 'postgres',
         'PASSWORD': '2591',
-        'HOST': '127.0.0.1',
+        'HOST': 'localhost',
         'PORT': '5432'
     }
 }
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -135,5 +137,3 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 django_heroku.settings(locals())
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
