@@ -63,7 +63,7 @@ def Profile_User(request, pk):
             return redirect('home')
         text = request.POST.get('text')
         Message.objects.create(text=text,user=profile)
-    return render(request, 'send.html', {"profile":profile,'PK':pk})
+    return render(request, 'send.html', {"profile":profile})
 
 @login_required(login_url='login')
 def setting(request):

@@ -134,13 +134,32 @@
               width: 300px;
               margin: auto;
             }
+            #header{
+                padding:20px;
+                border: 1px solid #550;
+            }
+            span{
+                color: #770;
+            }
+            a{
+                color: #990;
+                -webkit-tap-highlight-color: rgba(0,0,0,0);
+                transition-duration: 0.3s;
+                text-decoration: none;
+            }
+            a:hover{
+                opacity: 0.8;
+            }
         </style>
     </head>
     <body>
+        <div id="header">
+            <h1><a href="{% url 'home' %}"><span class="fa fa-user-circle"></span> Secret <span>Space</span></a></h1>
+        </div>
         <div id="container">
           <div id="imgarea">
             <div id="above"></div>
-              <img src="{{request.user.Profile.img.url}}">
+              <img src="{{profile.img.url}}">
           </div>
             <p id="h_para">{{profile.first_name}}  {{profile.last_name}}</p>
             <form method="post">

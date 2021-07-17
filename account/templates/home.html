@@ -1,15 +1,124 @@
-{% extends 'base.html' %}
 
-{%block content%}
-<h1>hello {{user.username}}</h1>
-  <li>  <a type="submit" href="register">register</a></li>
-   <li>  <a type="submit" href="login">login</a></li>
-   <li>  <a type="submit" href="/profile/{{user.id}}">profile</a></li>
-
-
-
-
-
-
-
-{%endblock%}
+<!DOCTYPE html>
+<html>
+    <head>
+                <link rel="icon" href="https://drive.google.com/u/0/uc?id=1K4KbbFhnaPsiLqkrNjp8XusqCl5q3Ee-&export=download" type="image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home</title>
+        <script>
+            function GoLogin() {
+                window.open("register" , "_self");
+            }
+        </script>
+        <style>
+            body{
+                background-color: #000;
+            }
+            *{
+                margin:0;
+            }
+            div{
+                padding:5%;
+                border-radius: 5px;
+                background: transparent;
+            }
+            button{
+                margin: 30px;
+                margin-left: calc(50% - 100px);
+                width: 200px;
+                color: #990;
+                border-radius: 10px;
+                transition-duration: 0.7s;
+                font-size:28px;
+                height: 50px;
+                font-family: 'Times New Roman', Times, serif;
+                border: 1px solid #990;
+                background: transparent;
+            }
+            button:hover{
+                background-color: #990;
+                color: #000;
+            }
+            p{
+                padding:10px;
+                margin:10px;
+                font-size:25px;
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                background-color: #000;
+                color: #990;
+            }
+            body{
+                background-color: #000;
+            }
+            *{
+                margin:0;
+            }
+            div{
+                border: 1px solid #550;
+                border-radius: 5px;
+                background: transparent;
+            }
+            #logout{
+                float: right;
+                width: 75px;
+                height: 40px;
+                color: #770;
+                border-radius: 10px;
+                transition-duration: 0.7s;
+                font-size:16px;
+                height: 40px;
+                font-family: 'Times New Roman', Times, serif;
+                border: 1px solid #660;
+                background: transparent;
+            }
+            #logout:hover{
+                background-color: #770;
+                color: #000;
+            }
+            h1{
+                padding-left: 5px;
+                color: #880;
+                display: inline-block;
+                font-family: 'Times New Roman', Times, serif;
+                text-shadow:
+                    0 1px 0 #441,
+                    0 2px 0 #331,
+                    0 3px 0 #551,
+                    0 4px 0 #585811,
+                    0 5px 0 #661,
+                    0 6px 1px rgba(100,100,50,.1),
+                    0 0 5px rgba(100,100,50,.1),
+                    0 1px 3px rgba(100,100,50,.3),
+                    0 3px 5px rgba(100,100,50,.2),
+                    0 5px 10px rgba(100,100,50,.25),
+                    0 10px 10px rgba(100,100,50,.2),
+                    0 20px 20px rgba(100,100,50,.15);
+            }
+            #header{
+                padding:10px;
+                border: 1px solid #550;
+            }
+            span{
+                color: #770;
+            }
+            a{
+                color: #990;
+                -webkit-tap-highlight-color: rgba(0,0,0,0);
+                transition-duration: 0.3s;
+                text-decoration: none;
+            }
+            a:hover{
+                opacity: 0.8;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="header">
+            <h1><a href="{%url 'home'%}"><span class="fa fa-user-circle"></span> Secret <span>Space</span></a></h1>
+        </div>
+        <div>
+            <P>Secret Space is a website where you can receive messages from your friends without knowing their names ... start by creating an account , share your profile link with your friends , wait for their frank opinions about you...!</P>
+            <button onclick="GoLogin()">Get started</button>
+        </div>
+    </body>
+</html>

@@ -101,17 +101,38 @@
             hr{
               border: 1px solid #770;
             }
+            #header{
+                padding:20px;
+                border: 1px solid #550;
+            }
+            span{
+                color: #770;
+            }
+            a{
+                color: #990;
+                -webkit-tap-highlight-color: rgba(0,0,0,0);
+                transition-duration: 0.3s;
+                text-decoration: none;
+            }
+            a:hover{
+                opacity: 0.8;
+            }
+
         </style>
     </head>
     <body>
+        <div id="header">
+            <h1><a href="{% url 'home' %}"><span class="fa fa-user-circle"></span> Secret <span>Space</span></a></h1>
+        </div>
         <div id="container">
           <div id="imgarea">
             <div id="above"></div>
               <img src="{{request.user.Profile.img.url}}">
           </div>
             <p id="h_para">{{user.first_name}}  {{user.last_name}}</p>
-            <button>Copy link</button>
+            <form action="logout"><button>logout</button></form>
             <a href="{%url 'setting'%}"><button>edit your profile</button></a>
+            <p>your link:</p><p>127.0.0.1/profile/{{user.id}}</p>
             <hr><marquee>You have  {{num}} messages</marquee>
             {% for n in messages_box %}
             <div id="space">
