@@ -127,7 +127,7 @@
         <div id="container">
           <div id="imgarea">
             <div id="above"></div>
-              <img src="https://drive.google.com/file/d/1HNkUfyzfN45U-CraHszvr-K3GnryNlTd/view?usp=sharing">
+              <img src="{{request.user.Profile.img.url}}">
           </div>
             <p id="h_para">{{user.first_name}}  {{user.last_name}}</p>
             <form action="logout"><button>logout</button></form>
