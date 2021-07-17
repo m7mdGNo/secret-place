@@ -132,7 +132,7 @@
             <p id="h_para">{{user.first_name}}  {{user.last_name}}</p>
             <form action="logout"><button>logout</button></form>
             <a href="{%url 'setting'%}"><button>edit your profile</button></a>
-            <p>your link:</p><p>127.0.0.1/profile/{{user.id}}</p>
+            <p>your link:</p><p>https://secret-space.herokuapp.com/profile/{{user.id}}</p>
             <hr><marquee>You have  {{num}} messages</marquee>
             {% for n in messages_box %}
             <div id="space">
