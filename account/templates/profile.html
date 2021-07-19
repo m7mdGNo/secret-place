@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Profile</title>
         <link rel="icon" href="https://drive.google.com/u/0/uc?id=1K4KbbFhnaPsiLqkrNjp8XusqCl5q3Ee-&export=download" type="image/x-icon">
@@ -133,6 +134,7 @@
             <form action="logout"><button>logout</button></form>
             <a href="{%url 'setting'%}"><button>edit your profile</button></a>
             <p>your link:</p><p>https://secret-space.herokuapp.com/profile/{{user.id}}</p>
+            <button onclick="copylink()">Copy link</button>
             <hr><marquee>You have  {{num}} messages</marquee>
             {% for n in messages_box %}
             <div id="space">
@@ -146,3 +148,16 @@
     </body>
 
 </html>
+<script>
+          var user_id = {{user.id}};
+          function copylink() {
+            var TempText = document.createElement("input");
+            var TextToCopy = "https://secret-space.herokuapp.com/profile/"+user_id;
+            TempText.value = TextToCopy;
+            document.body.appendChild(TempText);
+            TempText.select();
+            document.execCommand("copy");
+            document.body.removeChild(TempText);
+            alert("Copied the text: " + TempText.value);
+          }
+</script>

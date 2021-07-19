@@ -150,6 +150,9 @@
             a:hover{
                 opacity: 0.8;
             }
+            #message{
+            color: #990;
+            }
         </style>
     </head>
     <body>
@@ -164,9 +167,10 @@
             <p id="h_para">{{profile.first_name}}  {{profile.last_name}}</p>
             <form method="post">
                 {%csrf_token%}
-            <textarea name="text" placeholder="Type your message here"></textarea>
+            <textarea name="text" placeholder="Type your message here" required></textarea>
             <input type="submit" value="Send">
             </form>
+
         </div>
     </body>
 </html>

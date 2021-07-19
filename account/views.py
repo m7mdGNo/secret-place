@@ -11,11 +11,13 @@ def Logout(request):
 
 def home(request):
     user = request.user
+    no_of_members = User.objects.all()
+    form = no_of_members.count()
     if user.is_authenticated:
         messages_box = user.Profile.message_set.all()
         num_of_messages = messages_box.count()
         return render(request, 'profile.html', {'messages_box': messages_box,'num':num_of_messages})
-    return render(request, 'home.html')
+    return render(request, 'home.html',{'form':form})
 
 
 def Register(request):
@@ -61,7 +63,10 @@ def Profile_User(request, pk):
     if request.user.is_authenticated:
         if profile == request.user.Profile:
             return redirect('home')
-        text = request.POST.get('text')
+    text = request.POST.get('text')
+    if text == None:
+        print('enter a message')
+    else:
         Message.objects.create(text=text,user=profile)
     return render(request, 'send.html', {"profile":profile})
 
