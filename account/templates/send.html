@@ -153,6 +153,9 @@
             #message{
             color: #990;
             }
+            #success{
+            color: #990;
+            }
         </style>
     </head>
     <body>
@@ -166,6 +169,16 @@
           </div>
             <p id="h_para">{{profile.first_name}}  {{profile.last_name}}</p>
             <form method="post">
+                {% if messages %}
+
+  {% for message in messages %}
+  <div id="success" class="alert alert-info">
+    {{ message }}
+  </div>
+  {% endfor %}
+
+  {% endif %}
+
                 {%csrf_token%}
             <textarea name="text" placeholder="Type your message here" required></textarea>
             <input type="submit" value="Send">

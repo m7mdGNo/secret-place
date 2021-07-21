@@ -14,9 +14,11 @@ def home(request):
     no_of_members = User.objects.all()
     form = no_of_members.count()
     if user.is_authenticated:
-        messages_box = user.Profile.message_set.all()
+        profile = request.user.Profile
+        messages_box = user.Profile.message_set.all().order_by('-created_at')
         num_of_messages = messages_box.count()
-        return render(request, 'profile.html', {'messages_box': messages_box,'num':num_of_messages})
+
+        return render(request, 'profile.html', {'messages_box': messages_box,'num':num_of_messages,'profile':profile})
     return render(request, 'home.html',{'form':form})
 
 
@@ -65,9 +67,10 @@ def Profile_User(request, pk):
             return redirect('home')
     text = request.POST.get('text')
     if text == None:
-        print('enter a message')
+        pass
     else:
         Message.objects.create(text=text,user=profile)
+        messages.success(request,'send successfully')
     return render(request, 'send.html', {"profile":profile})
 
 @login_required(login_url='login')
@@ -77,10 +80,11 @@ def setting(request):
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
         email = request.POST.get('email')
-        profile.user.email = email
-        profile.user.first_name = first_name
-        profile.user.last_name = last_name
-        profile.user.save()
+        profile.email = email
+        profile.first_name = first_name
+        profile.last_name = last_name
+        profile.save()
+        messages.success(request,'updated successfully')
     return render(request,'settings.html')
 
 

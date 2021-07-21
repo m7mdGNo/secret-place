@@ -157,19 +157,48 @@
             -webkit-box-shadow: 0 0 0 30px #000 inset !important;
             -webkit-text-fill-color: #990 !important;
             }
+            #success{
+            color: #990;
+            }
+            #header{
+                padding:20px;
+                border: 1px solid #550;
+            }
+            span{
+                color: #770;
+            }
+            a{
+                color: #990;
+                -webkit-tap-highlight-color: rgba(0,0,0,0);
+                transition-duration: 0.3s;
+                text-decoration: none;
+            }
         </style>
     </head>
     <body>
+    <div id="header">
+            <h1><a href="{% url 'home' %}"><span class="fa fa-user-circle"></span> Secret <span>Space</span></a></h1>
+        </div>
         <div id="container">
           <div id="imgarea">
             <div id="above"></div>
               <img src="{{request.user.Profile.img.url}}">
           </div>
           <button>Change picture</button>
+             {% if messages %}
+
+  {% for message in messages %}
+  <div id="success" class="alert alert-info">
+    {{ message }}
+  </div>
+  {% endfor %}
+
+  {% endif %}
             <fieldset>
             <legend>Change Login info</legend>
+
             <form method="post">
-                {% csrf_token %}
+               {% csrf_token %}
             <input type="text" placeholder="First name" value="{{user.first_name}}" id="names" name="first_name">
             <input type="text" placeholder="Last name" value="{{user.last_name}}"  id="names" name="last_name">
             <input type="text"  placeholder="Email" value="{{user.email}}" name="email">

@@ -7,6 +7,7 @@ class Profile(models.Model):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     email = models.CharField(max_length=100)
+    bio = models.CharField(max_length=100,default='Hello ,iam member in secret-space')
     img = models.ImageField(null=True, blank=True,upload_to='images/',default='images/test.png')
 
 
