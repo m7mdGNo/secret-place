@@ -156,6 +156,11 @@
             #success{
             color: #990;
             }
+            #bio{
+              color: #990;
+              font-size: 15px;
+              margin: 10px;
+            }
         </style>
     </head>
     <body>
@@ -168,6 +173,7 @@
               <img src="{{profile.img.url}}">
           </div>
             <p id="h_para">{{profile.first_name}}  {{profile.last_name}}</p>
+            <p id="bio">{{profile.bio}}</p>
             <form method="post">
                 {% if messages %}
 

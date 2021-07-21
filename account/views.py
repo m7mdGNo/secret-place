@@ -80,12 +80,14 @@ def setting(request):
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
         email = request.POST.get('email')
+        bio = request.POST.get('bio')
         profile.email = email
         profile.first_name = first_name
         profile.last_name = last_name
+        profile.bio = bio
         profile.save()
         messages.success(request,'updated successfully')
-    return render(request,'settings.html')
+    return render(request,'settings.html',{'profile':profile})
 
 
 
