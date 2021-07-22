@@ -173,7 +173,25 @@
                 transition-duration: 0.3s;
                 text-decoration: none;
             }
-        </style>
+            .custom-file-input::-webkit-file-upload-button {
+        visibility: hidden;
+      }
+      .custom-file-input::before {
+  content: 'pick a picture';
+  display: inline-block;
+  background-color: #000;
+  color: #990;
+  border: none;
+  border-radius: 2px;
+  padding: 10px 29px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 10pt;
+}
+     </style>
     </head>
     <body>
     <div id="header">
@@ -184,7 +202,6 @@
             <div id="above"></div>
               <img src="{{request.user.Profile.img.url}}">
           </div>
-          <button>Change picture</button>
              {% if messages %}
 
   {% for message in messages %}
@@ -199,12 +216,20 @@
             <fieldset>
             <legend>Change Login info</legend>
 
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                {% csrf_token %}
-            <input type="text" placeholder="First name" value="{{profile.first_name}}"  id="names" name="first_name">
-            <input type="text" placeholder="Last name" value="{{profile.last_name}}"   id="names" name="last_name">
-            <input type="text"  placeholder="Email" value="{{profile.email}}" name="email">
-            <input type="text"  placeholder="Bio" value="{{profile.bio}}" name="bio">
+                {{form.first_name}}
+                {{form.last_name}}
+                {{form.email}}
+                {{form.bio}}
+                <div>
+                    <input type="file" class="custom-file-input" name="img" accept="image/*" />
+                </div>
+
+<!--            <input type="text" placeholder="First name" value="{{profile.first_name}}"  id="names" name="first_name">-->
+<!--            <input type="text" placeholder="Last name" value="{{profile.last_name}}"   id="names" name="last_name">-->
+<!--            <input type="text"  placeholder="Email" value="{{profile.email}}" name="email">-->
+<!--            <input type="text"  placeholder="Bio" value="{{profile.bio}}" name="bio">-->
             <input type="submit" value="Save">
             </form>
             </fieldset>

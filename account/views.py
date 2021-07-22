@@ -4,6 +4,9 @@ from .models import Message,Profile
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from .forms import *
+
+
 
 def Logout(request):
     logout(request)
@@ -75,19 +78,15 @@ def Profile_User(request, pk):
 
 @login_required(login_url='login')
 def setting(request):
-    profile = request.user.Profile
+
+    form = ProfileForm(instance=request.user.Profile)
     if request.method == 'POST':
-        first_name = request.POST.get('first_name')
-        last_name = request.POST.get('last_name')
-        email = request.POST.get('email')
-        bio = request.POST.get('bio')
-        profile.email = email
-        profile.first_name = first_name
-        profile.last_name = last_name
-        profile.bio = bio
-        profile.save()
-        messages.success(request,'updated successfully')
-    return render(request,'settings.html',{'profile':profile})
+        form = ProfileForm(request.POST,request.FILES,instance=request.user.Profile)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request,'updated successfully')
+    return render(request,'settings.html',{'form':form})
 
 
 
