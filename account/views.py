@@ -90,4 +90,6 @@ def setting(request):
 
 
 
-
+def search(request):
+    form = Profile.objects.all()
+    return render(request,'search.html',{'form':form})

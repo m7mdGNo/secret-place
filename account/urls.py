@@ -13,6 +13,7 @@ urlpatterns = [
     path('profile/setting/',views.setting,name='setting'),
     path('profile/<str:pk>/',views.Profile_User,name='profile'),
     path('media/<path:path>', serve, {'document_root': settings.MEDIA_ROOT}),
+    path('search/',views.search,name='search'),
 
 
 ]
