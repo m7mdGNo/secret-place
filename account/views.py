@@ -78,7 +78,6 @@ def Profile_User(request, pk):
 
 @login_required(login_url='login')
 def setting(request):
-
     form = ProfileForm(instance=request.user.Profile)
     if request.method == 'POST':
         form = ProfileForm(request.POST,request.FILES,instance=request.user.Profile)

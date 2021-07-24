@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -189,7 +188,7 @@
             <textarea name="text" placeholder="Type your message here" required></textarea>
             <input type="submit" value="Send">
             </form>
-
+         {%if user.is_authenticated%}{%else%} <p>Create an account and start receiving messages , <a href="{% url 'register' %}">Click here</a></p>{%endif%}
         </div>
     </body>
 </html>
