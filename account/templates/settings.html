@@ -64,6 +64,13 @@
               background-color: #990;
               color: #000;
             }
+            input[type=submit]{
+              width: 100px;
+            }
+            .btns:hover{
+              background-color: #990;
+              color: #000;
+            }
             button:hover{
               background-color: #990;
               color: #000;
@@ -173,24 +180,9 @@
                 transition-duration: 0.3s;
                 text-decoration: none;
             }
-            .custom-file-input::-webkit-file-upload-button {
-        visibility: hidden;
-      }
-      .custom-file-input::before {
-  content: 'pick a picture';
-  display: inline-block;
-  background-color: #000;
-  color: #990;
-  border: none;
-  border-radius: 2px;
-  padding: 10px 29px;
-  outline: none;
-  white-space: nowrap;
-  -webkit-user-select: none;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 10pt;
-}
+            #selectedFile{
+              display: none;
+            }
      </style>
         <script>
           window.addEventListener('load', function() {
@@ -237,7 +229,8 @@
                 {{form.email}}
                 {{form.bio}}
                 <div>
-                    <input type="file" class="custom-file-input" name="img" accept="image/*" />
+                    <input type="file" id="selectedFile" class="custom-file-input" name="img" accept="image/*" />
+                     <input class="btns" type="button" value="Change picture" onclick="document.getElementById('selectedFile').click();"/><br>
                 </div>
 
 <!--            <input type="text" placeholder="First name" value="{{profile.first_name}}"  id="names" name="first_name">-->
