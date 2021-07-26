@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-                <link rel="icon" href="https://drive.google.com/u/0/uc?id=1K4KbbFhnaPsiLqkrNjp8XusqCl5q3Ee-&export=download" type="image/x-icon">
+        <link rel="icon" href="https://drive.google.com/u/0/uc?id=1K4KbbFhnaPsiLqkrNjp8XusqCl5q3Ee-&export=download" type="image/x-icon">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Home</title>
         <script>
@@ -80,19 +81,6 @@
                 color: #880;
                 display: inline-block;
                 font-family: 'Times New Roman', Times, serif;
-                text-shadow:
-                    0 1px 0 #441,
-                    0 2px 0 #331,
-                    0 3px 0 #551,
-                    0 4px 0 #585811,
-                    0 5px 0 #661,
-                    0 6px 1px rgba(100,100,50,.1),
-                    0 0 5px rgba(100,100,50,.1),
-                    0 1px 3px rgba(100,100,50,.3),
-                    0 3px 5px rgba(100,100,50,.2),
-                    0 5px 10px rgba(100,100,50,.25),
-                    0 10px 10px rgba(100,100,50,.2),
-                    0 20px 20px rgba(100,100,50,.15);
             }
             #header{
                 padding:10px;
@@ -107,37 +95,53 @@
             }
             a{
               color: #770;
-              font-size: 20px;
+              font-size: 30px;
               text-decoration: none;
               transition-duration: 0.6s;
               -webkit-tap-highlight-color: rgba(0,0,0,0);
             }
             a:hover{
               color: #990;
-              font-size: 22px;
               opacity: 0.8;
-              background-color: #220;
             }
             #a1{
-                color: #990;
+                color: #770;
                 -webkit-tap-highlight-color: rgba(0,0,0,0);
                 transition-duration: 0.3s;
                 text-decoration: none;
-                font-size: 30px;
+                font-size: 22px;
             }
             #a1:hover{
                 opacity: 0.8;
+            }
+            #searchbtn{
+              height: 35px;
+              width: 35px;
+              border: 2px solid #770;
+              background-color: #000;
+              color: #770;
+              border-radius: 50%;
+              float: right;
+              margin: 0;
+              margin-top: 0px;
+              font-size: 18px;
+              transition-duration: 0.6s;
+            }
+            #searchbtn:hover{
+              border: 2px solid #990;
+              color: #990;
             }
         </style>
     </head>
     <body>
         <div id="header">
-            <h1><a id="a1" href="{%url 'home'%}"><span class="fa fa-user-circle"></span> Secret <span>Space</span></a></h1>
+            <h1><a href="{% url 'home' %}"><span class="fa fa-user-circle"></span> Secret <span>Space</span></a></h1>
+            <a href="{% url 'search' %}"><button id="searchbtn" onclick="goSearch()" class="fa fa-search"></button></a>
         </div>
         <div>
-            <P>Secret Space is a website where you can receive messages from your friends without knowing their names ... start by creating an account , share your profile link with your friends , wait for their frank opinions about you...! , and join {{form}} members</P>
+            <P>Secret Space is a website where you can receive messages from your friends without knowing their names ... start by creating an account , share your profile link with your friends , wait for their frank opinions about you...! , and join {{form}} users</P>
             <button onclick="GoLogin()">Get started</button>
-            <p id="dev">Developed by <a href="https://ahmed0saber.github.io/ehrth/dark_cv.html" target="_blank">Ahmed Saber</a> and <a href="https://github.com/m7mdGNo" target="_blank">Mohammed El Ganainy</a></p>
+            <p id="dev">Developed by <a id="a1" href="https://ahmed0saber.github.io/ehrth/dark_cv.html" target="_blank">Ahmed Saber</a> and <a id="a1" href="https://github.com/m7mdGNo" target="_blank">Mohammed El Ganainy</a></p>
         </div>
 
     </body>
