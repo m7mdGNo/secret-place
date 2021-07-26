@@ -187,6 +187,9 @@
             ::placeholder{
               color: #550;
             }
+            #hideit{
+              display: none;
+            }
         </style>
     </head>
     <body>
@@ -202,7 +205,8 @@
             <p id="h_para">{{profile.first_name}}  {{profile.last_name}}</p>
             <p id="bio">{{profile.bio}}</p>
             <div id="btns_container">
-            <form action="logout"><button class="fa fa-sign-out"></button></form>
+            <form action="logout"><button id="hideit" class="fa fa-sign-out"></button></form>
+            <button class="fa fa-sign-out" onclick="logout()"></button>
             <a href="{%url 'setting'%}"><button class="fa fa-cogs"></button></a>
             <button onclick="copylink()"class="fa fa-copy"></button>
             </div>
@@ -234,7 +238,15 @@
             document.body.removeChild(TempText);
             alert("Copied the text: " + TempText.value);
           }
-
-
-
+          
+          
+          function logout()
+          {
+            let isExecuted = confirm("Are you sure to log out ?!");
+            
+            if(isExecuted)
+            {
+              document.getElementById('hideit').click();
+            }
+          }
 </script>
