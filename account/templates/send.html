@@ -77,7 +77,7 @@
             }
             #above{
               height: 150px;
-              background-color: #550;
+              width: 100%;
             }
             #imgarea{
               height: 260px;
@@ -182,14 +182,14 @@
             }
         </style>
     </head>
-    <body>
+    <body onresize="myFunction()" onload="myFunction()">
         <div id="header">
             <h1><a href="{% url 'home' %}"><span class="fa fa-user-circle"></span> Secret <span>Space</span></a></h1>
             <a href="{% url 'search' %}"><button id="searchbtn" onclick="goSearch()" class="fa fa-search"></button></a>
         </div>
         <div id="container">
           <div id="imgarea">
-            <div id="above"></div>
+            <canvas id="above"></canvas>
               <img src="{{profile.img.url}}">
           </div>
             <p id="h_para">{{profile.first_name}}  {{profile.last_name}}</p>
@@ -213,3 +213,65 @@
         </div>
     </body>
 </html>
+<script>
+let w2 = 0;
+function myFunction(){
+	let canvas = document.querySelector('canvas');
+	let ctx = canvas.getContext('2d');
+	let w = window.innerWidth;
+	let h = window.innerHeight;
+if(w!==w2){
+  w2=w;
+	canvas.width = w;
+	canvas.height = 150;
+
+	clearView();
+
+	let particles = [];
+
+	for(let i=0; i<250; i++){
+		particles.push({
+			"px": w/2,
+			"py": h/2,
+			"vx":5-10 * Math.random(),
+			"vy": 5-10 * Math.random(),
+			"r": 5+10 * Math.random()
+		});
+	}
+
+	function animation(){
+
+		clearView();
+
+		ctx.fillStyle = "#990";
+
+		for(var i = 0; i < 120; i++){
+			ctx.beginPath();
+			ctx.arc(particles[i].px, particles[i].py, particles[i].r, 0 * Math.PI, Math.PI * 2);
+			ctx.fill();
+
+			particles[i].px += particles[i].vx;
+			particles[i].py += particles[i].vy;
+
+			if(particles[i].px >= w || particles[i].px <= 0){
+				particles[i].vx = -particles[i].vx;
+			}
+
+			if(particles[i].py >= h || particles[i].py <= 0){
+				particles[i].vy = -particles[i].vy;
+			}
+		}
+
+		return window.requestAnimationFrame(animation)
+	}
+
+	function clearView(){
+		ctx.clearRect(0,0,w,h);
+
+		ctx.fillStyle = "#660";
+		ctx.fillRect(0,0,w,h);
+	}
+window.requestAnimationFrame(animation)
+}
+}
+    </script>
