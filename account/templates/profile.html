@@ -205,7 +205,7 @@
             <a href="{%url 'setting'%}"><button class="fa fa-cogs"></button></a>
             <button onclick="copylink()"class="fa fa-copy"></button>
             </div>
-            <hr><marquee>You have  {{num}} messages</marquee>
+            <hr><marquee>You have received {{num}} messages</marquee>
             <input oninput="myFunction()" id="myInput" placeholder="Search for messages">
             <div id="all_messages">
             {% for n in messages_box %}
